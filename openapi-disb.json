@@ -1,0 +1,1429 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "\n# Introduction\nThe DisburseCloud API offers a powerful and flexible solution for managing financial disbursements and related processes.\nDesigned for seamless integration with various business platforms, it provides a robust set of tools for handling transactions, \nauthenticating users, and ensuring secure financial operations. Our API is tailored to cater to a wide range of financial services,\nincluding automated payments, real-time transaction tracking, and efficient management of user credentials. \nWith its dual environments for sandbox testing and production use, DisburseCloud ensures a reliable and scalable infrastructure,\nmaking it an ideal choice for businesses looking to optimize their financial workflows. Whether you're a small enterprise or a\nlarge organization, the DisburseCloud API is engineered to provide an intuitive, secure, and efficient way to manage your financial \ntransactions.\n\n# Authentication\n\nDisbursecloud uses Access Tokens for Authentication:\n  - Description:\n  This endpoint is central to our API's security framework, serving as the primary method for user authentication. By submitting\n  your credentials to this endpoint, you initiate a secure authentication process. Upon successful authentication, the system \n  grants an access token (Bearer token), which is essential for authorizing subsequent API calls. It's important to note that this\n  access token has a validity period of 3600 seconds. For continued access to our API services, include this token in the \n  Authorization header of your API requests, ensuring uninterrupted and secure interaction with our endpoints.\n  \n<SecurityDefinitions />    \n",
+    "version": "2.0.0",
+    "title": "DisburseCloud",
+    "termsOfService": "http://www.disbursecloud.com/termsofservice",
+    "contact": {
+      "name": "API Support",
+      "email": "apiteam@disbursecloud.com",
+      "url": "https://disbursecloud.com"
+    },
+    "x-logo": {
+      "url": "https://www.disbursecloud.com/wp-content/uploads/2024/01/Logo-Blue.png",
+      "altText": "DisburseCloud logo"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://sandbox.services.disbursecloud.com/api/v1",
+      "description": "Sandbox"
+    },
+    {
+      "url": "https://app.services.disbursecloud.com/api/v1",
+      "description": "Production"
+    }
+  ],
+  "tags": [
+    {
+      "name": "authentication",
+      "description": "How to authenticate into DisburseCloud"
+    },
+    {
+      "name": "add funds"
+    },
+    {
+      "name": "disbursement"
+    },
+    {
+      "name": "auth_model",
+      "x-displayName": "The Auth Model",
+      "description": "<SchemaDefinition schemaRef=\"#/components/schemas/Auth\" />  \n"
+    },
+    {
+      "name": "authparty_model",
+      "x-displayName": "The Auth Party Model",
+      "description": "<SchemaDefinition schemaRef=\"#/components/schemas/authorization-partie\" />\n"
+    },
+    {
+      "name": "delivery_model",
+      "x-displayName": "The Delivery Option Model",
+      "description": "<SchemaDefinition schemaRef=\"#/components/schemas/delivery-option\" />\n"
+    },
+    {
+      "name": "payee_model",
+      "x-displayName": "The Payee Model",
+      "description": "<SchemaDefinition schemaRef=\"#/components/schemas/payee\" />\n"
+    },
+    {
+      "name": "field_value_model",
+      "x-displayName": "The Field Value Model",
+      "description": "<SchemaDefinition schemaRef=\"#/components/schemas/field_values\" />\n"
+    },
+    {
+      "name": "onetimer_create_model",
+      "x-displayName": "The Onetimer Create Model",
+      "description": "<SchemaDefinition schemaRef=\"#/components/schemas/onetimer-create\" />\n"
+    },
+    {
+      "name": "cancel_disbursement_model",
+      "x-displayName": "The Cancel Disbursement Model",
+      "description": "<SchemaDefinition schemaRef=\"#/components/schemas/CancelDisbursement\" /> \n"
+    },
+    {
+      "name": "signed_documents_model",
+      "x-displayName": "The Signed Documents Model",
+      "description": "<SchemaDefinition schemaRef=\"#/components/schemas/SignedDocuments\" /> \n"
+    },
+    {
+      "name": "signed_documents_respnse_model",
+      "x-displayName": "The Signed Document Response Model",
+      "description": "<SchemaDefinition schemaRef=\"#/components/schemas/SignedDocumentsResponse\" />\n"
+    },
+    {
+      "name": "authresponse_model",
+      "x-displayName": "The Auth Response Model",
+      "description": "<SchemaDefinition schemaRef=\"#/components/schemas/AuthResponse\" />\n"
+    },
+    {
+      "name": "disburse_response_model",
+      "x-displayName": "The Disbursement Response Model",
+      "description": "<SchemaDefinition schemaRef=\"#/components/schemas/DisbursementResponse\" />\n"
+    },
+    {
+      "name": "payee_response_model",
+      "x-displayName": "The Payee Response Model",
+      "description": "<SchemaDefinition schemaRef=\"#/components/schemas/payeeResponse\" />\n"
+    },
+    {
+      "name": "badrequest_model",
+      "x-displayName": "The Bad Request Model",
+      "description": "<SchemaDefinition schemaRef=\"#/components/schemas/BadRequest\" /> \n"
+    },
+    {
+      "name": "notFound_model",
+      "x-displayName": "The Not Found Model",
+      "description": "<SchemaDefinition schemaRef=\"#/components/schemas/NotFound\" /> \n"
+    },
+    {
+      "name": "error_detail_model",
+      "x-displayName": "The ERROR DETAIL Model",
+      "description": "<SchemaDefinition schemaRef=\"#/components/schemas/ERROR_DETAIL\" />\n"
+    },
+    {
+      "name": "internal_server_error_model",
+      "x-displayName": "The Internal Server Error Model",
+      "description": "<SchemaDefinition schemaRef=\"#/components/schemas/InternalServerError\" />                                                                   \n"
+    }
+  ],
+  "x-tagGroups": [
+    {
+      "name": "General",
+      "tags": [
+        "authentication"
+      ]
+    },
+    {
+      "name": "Funding",
+      "tags": [
+        "add funds"
+      ]
+    },
+    {
+      "name": "Disbursements",
+      "tags": [
+        "disbursement"
+      ]
+    },
+    {
+      "name": "Models",
+      "tags": [
+        "auth_model",
+        "onetimer_create_model",
+        "authparty_model",
+        "delivery_model",
+        "payee_model",
+        "field_value_model",
+        "cancel_disbursement_model",
+        "signed_documents_model",
+        "signed_documents_respnse_model",
+        "authresponse_model",
+        "disburse_response_model",
+        "payee_response_model",
+        "add_fund_response_model",
+        "badrequest_model",
+        "notFound_model",
+        "error_detail_model",
+        "internal_server_error_model"
+      ]
+    }
+  ],
+  "paths": {
+    "/companies/authenticate": {
+      "post": {
+        "tags": [
+          "authentication"
+        ],
+        "summary": "Authentication",
+        "description": "This API endpoint allows for user authentication using provided credentials. Upon successful authentication, a Bearer token (access token) will be returned. This token is required for authorization in subsequent API calls and has a lifespan of 3600 seconds . The access token should be passed in the \"Authorization\" header of all subsequent API requests.",
+        "requestBody": {
+          "description": "Create a new token",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Auth"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuthResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/disbursements/create": {
+      "post": {
+        "tags": [
+          "disbursement"
+        ],
+        "summary": "Full-process one-timers",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "description": "This endpoint is used to release disbursements to payees. You can also specify authorization parties that will authorize a particular payee’s disbursement before the payee receives it. If the information provided is correct, Disbursecloud will release the disbursement to all the payees. DisburseCloud provides its users some payment options such as ACH, Virtual card, Instant deposit, Digital check, Postal Check, Venmo, and PayPal. You can also specify which payment options you want your users to see/choose in this API call.",
+        "requestBody": {
+          "description": "Create disbursement",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/onetimer-create"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "The request body fields are returned as they were entered, with the exception of the \"status\" and \"created_at\" fields located within the PAYEE object array, which can be used to check the status of all payees. Below is an example of a response, with the additional fields highlighted in bold.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DisbursementResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "If no response body is returned, it indicates that either the authentication token is missing or it is not valid."
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/disbursements/cancel": {
+      "post": {
+        "tags": [
+          "disbursement"
+        ],
+        "summary": "Cancel disbursement",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "description": "The \"Cancel Disbursement\" endpoint enables developers to cancel a disbursement for a specific payee by providing the disbursement uuid and the payee uuid of the disbursement to be cancelled in the request body.",
+        "requestBody": {
+          "description": "Create a new token",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CancelDisbursement"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "If no response body is returned, it indicates that the disbursement has been successfully cancelled."
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "If no response body is returned, it indicates that either the authentication token is missing or it is not valid."
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/companies/add-funds": {
+      "post": {
+        "tags": [
+          "add funds"
+        ],
+        "summary": "Add funds to company balance",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "amount",
+            "schema": {
+              "type": "number"
+            },
+            "required": true,
+            "description": "The amount you want to add to the company balance"
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "description": "This endpoint is used to add funds to your company’s account on DisburseCloud. Specify the amount in the query params you want to add to your account and it will deduct that amount from the bank that you provided the details for at the time of signing up for DisburseCloud.",
+        "responses": {
+          "200": {
+            "description": "ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AddFundResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "If no response body is returned, it indicates that either the authentication token is missing or it is not valid."
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/disbursements": {
+      "get": {
+        "tags": [
+          "Disbursement"
+        ],
+        "summary": "Get disbursement.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "disbursement_uuid",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The disbursement uuid of the disbursement you want the details for."
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "description": "This endpoint is used to get the disbursement details.",
+        "responses": {
+          "200": {
+            "description": "The request body fields are returned as they were entered, with the exception of the \"status\" and \"created_at\" fields located within the PAYEE object array, which can be used to check the status of all payees. Below is an example of a response, with the additional fields highlighted in bold.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DisbursementResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "If no response body is returned, it indicates that either the authentication token is missing or it is not valid."
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/disbursements/{disbursement_uuid}/payees/{payee_uuid}": {
+      "get": {
+        "tags": [
+          "disbursement"
+        ],
+        "summary": "Get disbursement.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "disbursement_uuid",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The disbursement uuid of the disbursement you want the details for."
+          },
+          {
+            "in": "path",
+            "name": "payee_uuid",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The specific payee’s payee_uuid of whom you want the details for."
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "description": "This endpoint is used to get the details of a disbursement’s payee.",
+        "responses": {
+          "200": {
+            "description": "The request body fields are returned as they were entered, with the exception of the \"status\" and \"created_at\" fields located within the PAYEE object array, which can be used to check the status of all payees. Below is an example of a response, with the additional fields highlighted in bold.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/payee"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "If no response body is returned, it indicates that either the authentication token is missing or it is not valid."
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/disbursements/{disbursement_uuid}/payees/{payee_uuid}/resend-email": {
+      "post": {
+        "tags": [
+          "disbursement"
+        ],
+        "summary": "Resend disbursement email.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "disbursement_uuid",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The disbursement uuid of the disbursement you want the details for."
+          },
+          {
+            "in": "path",
+            "name": "payee_uuid",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The specific payee’s payee_uuid of whom you want the details for."
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "description": "This endpoint is used to resend the disbursement email in case the payee does not receive it.",
+        "responses": {
+          "200": {
+            "description": "No response body. The http code 200 means that the email was resent successfully."
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "If no response body is returned, it indicates that either the authentication token is missing or it is not valid."
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/disbursements/{disbursement_uuid}/payees/{payee_uuid}/transaction": {
+      "get": {
+        "tags": [
+          "disbursement"
+        ],
+        "summary": "Resend disbursement email.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "disbursement_uuid",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The disbursement uuid of the disbursement you want the details for."
+          },
+          {
+            "in": "path",
+            "name": "payee_uuid",
+            "schema": {
+              "type": "string"
+            },
+            "required": true,
+            "description": "The specific payee’s payee_uuid of whom you want the details for."
+          }
+        ],
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "description": "This endpoint is used to get the transaction details of a payee’s disbursement. The transaction details contain how much was the disbursecloud fee on this payee transaction, what was the billed amount and which payment method was used to complete this payment. You will not get a transaction of a payment unless the payee chooses a payment method.",
+        "responses": {
+          "200": {
+            "description": "TRANSACTION OBJECT"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "If no response body is returned, it indicates that either the authentication token is missing or it is not valid."
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/documents/get-payee-disbursement-signed-documents": {
+      "post": {
+        "tags": [
+          "disbursement"
+        ],
+        "summary": "Get Payee Disbursement Signed Documents.",
+        "security": [
+          {
+            "BearerAuth": []
+          }
+        ],
+        "description": "This endpoint is designed to retrieve all the signed documents related to a payee's disbursement. By utilizing this endpoint, you can access a comprehensive collection of all documents that have been signed and associated with the payee's disbursement. This includes documents such as Auth party, ACH, Payee, and other legal paperwork that may be necessary for the disbursement process. The endpoint provides a convenient and efficient way to access all the necessary signed documents in one place, helping to streamline the disbursement process and ensure that all necessary documentation is easily accessible.",
+        "requestBody": {
+          "description": "Create disbursement",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignedDocuments"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "DISBURSEMENT_DOCUMENT_DETAILS",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignedDocumentsResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BadRequest"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "If no response body is returned, it indicates that either the authentication token is missing or it is not valid."
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NotFound"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/InternalServerError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Auth": {
+        "required": [
+          "username",
+          "password"
+        ],
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "description": "TIN number of the Company"
+          },
+          "password": {
+            "type": "string",
+            "description": "Company API Key"
+          }
+        }
+      },
+      "authorization-partie": {
+        "required": [
+          "party_uuid",
+          "email",
+          "first_name",
+          "last_name",
+          "phone"
+        ],
+        "type": "object",
+        "properties": {
+          "party_uuid": {
+            "type": "string",
+            "description": "To ensure proper identification and differentiation between authorization parties, the \"party_uuid\" field must be unique.",
+            "example": "auth-party-1"
+          },
+          "title": {
+            "type": "string",
+            "description": "The \"title\" field allows developers to specify a title for the authorization party. This title will be displayed in the email sent to the authorization party for the purpose of approving the disbursement. Any relevant or descriptive text can be entered in this field.",
+            "example": "Policy holder"
+          },
+          "email": {
+            "type": "string",
+            "description": "The \"email\" field requires developers to input the email of the authorization party, where they will receive the request for authorization of the disbursement.",
+            "example": "auth_party@example.com"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "Auth party’s first name.",
+            "example": "James"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "Auth party’s last name.",
+            "example": "McGill"
+          },
+          "phone": {
+            "type": "string",
+            "description": "The \"phone\" field requires developers to input the phone number of the authorization party. This is necessary for authentication via OTP when the authorization party receives the email requesting approval of the disbursement.",
+            "example": "0000000000"
+          }
+        }
+      },
+      "delivery-option": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "boolean",
+            "description": "The \"email\" field allows developers to specify whether the disbursement should be sent to the payee via email. By setting this field to \"true\", the disbursement will be delivered to the payee through their registered email.",
+            "example": true
+          },
+          "sms": {
+            "type": "boolean",
+            "description": "The \"sms\" field allows developers to specify whether the disbursement should be sent to the payee via sms to their registered phone number. By setting this field to \"true\", the disbursement will be delivered to the payee via SMS.",
+            "example": false
+          }
+        }
+      },
+      "payee": {
+        "required": [
+          "payee_type_id",
+          "amount",
+          "payee_uuid",
+          "email",
+          "first_name",
+          "last_name",
+          "address_one",
+          "address_two",
+          "city",
+          "state",
+          "zip_code",
+          "phone",
+          "delivery_options",
+          "allowed_payment_method_ids"
+        ],
+        "type": "object",
+        "properties": {
+          "payee_type_id": {
+            "type": "integer",
+            "description": "This parameter defines the type of payee you are sending the disbursement to. The value ranges from 1 to 4. Following is the explanation of all the payee type ids ONE_TIMER = 1, VENDOR = 2, AGENCY = 3, NAMED_INSURED = 4",
+            "example": 1
+          },
+          "amount": {
+            "type": "number",
+            "description": "The amount needed to be paid to the payee.",
+            "example": 20
+          },
+          "payee_uuid": {
+            "type": "string",
+            "description": "A unique identifier for the disbursement payee.",
+            "example": "payee-1"
+          },
+          "email": {
+            "type": "string",
+            "description": "When specifying the payee type as \"VENDOR\", \"AGENCY\" or \"NAMED_INSURED\", the \"email\" field requires developers to input the registered email of the respective vendor on the DisburseCloud platform. In the event that the entered email is not registered, the payee will receive an email inviting them to register on DisburseCloud in order to receive their payment. Alternatively, when specifying the payee type as \"ONE_TIMER\", the \"Enter Payee Email\" field requires developers to input the email of the one-time payee to whom the disbursement will be sent.",
+            "example": "payee_1@gmail.com"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "First name of the payee",
+            "example": "John"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "Last name of the payee",
+            "example": "Doe"
+          },
+          "address_one": {
+            "type": "string",
+            "description": "Address one of the payee",
+            "example": "123 Main Street"
+          },
+          "address_two": {
+            "type": "string",
+            "description": "Address two of the payee",
+            "example": ""
+          },
+          "city": {
+            "type": "string",
+            "description": "City name of the payee",
+            "example": "Payee city"
+          },
+          "state": {
+            "type": "string",
+            "description": "The \"state\" field requires developers to input the state abbreviation in short form. For example, instead of \"Florida\" it should be entered as \"FL\".",
+            "example": "FL"
+          },
+          "zip_code": {
+            "type": "string",
+            "description": "Payee’s zip code. Should be five characters long.",
+            "example": 33052
+          },
+          "phone": {
+            "type": "string",
+            "description": "Payee’s phone number. Should be 10 characters long. This number is required to verify the payee using an OTP.",
+            "example": "0000000000"
+          },
+          "delivery_options": {
+            "$ref": "#/components/schemas/delivery-option"
+          },
+          "allowed_payment_method_ids": {
+            "type": "array",
+            "description": "The \"allowed_payment_method_ids\" field requires developers to input the desired payment method IDs for the payee. The available options range from 1 to 7, corresponding to the following payment methods. 1. ACH 2. POSTAL CHECK 3. VIRTUAL CARD 4. INSTANT DEPOSIT 5. DIGITAL CHECK 6. VENMO 7. PAYPAL For example, to allow the payee to receive payment through ACH and Virtual Card, the developer would input the value of this field in the request body as allowed_payment_method_ids",
+            "items": {
+              "type": "integer"
+            },
+            "example": [
+              1,
+              4,
+              5,
+              6
+            ]
+          },
+          "permission_required_from": {
+            "type": "array",
+            "description": "To include authorization parties for the payee, developers must add the \"party_uuid\" field of the AUTH_PARTY object for each desired authorization party to the request array. This will ensure that each designated party approves the payment before it is released to the payee.",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "auth-party-1",
+              "auth-party-2"
+            ]
+          },
+          "field_values": {
+            "type": "array",
+            "xml": {
+              "wrapped": true
+            },
+            "items": {
+              "$ref": "#/components/schemas/field_values"
+            }
+          }
+        }
+      },
+      "field_values": {
+        "required": [
+          "name",
+          "value"
+        ],
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "API name of the custom field.",
+            "example": "insurer_first_name"
+          },
+          "value": {
+            "type": "string",
+            "description": "Value of the custom field.",
+            "example": "Gustavo"
+          }
+        }
+      },
+      "onetimer-create": {
+        "required": [
+          "payor_email",
+          "disbursement_uuid",
+          "payees"
+        ],
+        "type": "object",
+        "properties": {
+          "payor_email": {
+            "type": "string",
+            "description": "Enter the payor’s email that has an account on DisburseCloud associated with your company.",
+            "example": "payor@example.com"
+          },
+          "disbursement_uuid": {
+            "type": "string",
+            "description": "Enter a unique string which identifies your disbursement.",
+            "example": "disbursement-1"
+          },
+          "authorization_parties": {
+            "type": "array",
+            "description": "This array contains the AUTH_PARTY objects described below.",
+            "xml": {
+              "wrapped": true
+            },
+            "items": {
+              "$ref": "#/components/schemas/authorization-partie"
+            }
+          },
+          "payees": {
+            "type": "array",
+            "description": "This array contains the PAYEE objects described below. You can add the payees to this array you want to send the disbursements to.",
+            "xml": {
+              "wrapped": true
+            },
+            "items": {
+              "$ref": "#/components/schemas/payee"
+            }
+          }
+        }
+      },
+      "CancelDisbursement": {
+        "required": [
+          "disbursement_uuid",
+          "payee_uuid"
+        ],
+        "type": "object",
+        "properties": {
+          "disbursement_uuid": {
+            "type": "string",
+            "description": "The disbursement uuid of the disbursement you want to cancel",
+            "example": "disbursement-1"
+          },
+          "payee_uuid": {
+            "type": "string",
+            "description": "The payee uuid of the payee you want to cancel the disbursement for.",
+            "example": "payee-1"
+          }
+        }
+      },
+      "SignedDocuments": {
+        "required": [
+          "disbursement_uuid",
+          "payee_uuid"
+        ],
+        "type": "object",
+        "properties": {
+          "disbursement_uuid": {
+            "type": "string",
+            "description": "The disbursement uuid of the disbursement you want the details for."
+          },
+          "payee_uuid": {
+            "type": "string",
+            "description": "The specific payee’s payee_uuid of whom you want the details for."
+          }
+        }
+      },
+      "SignedDocumentsResponse": {
+        "type": "object",
+        "properties": {
+          "DocumentName": {
+            "type": "string",
+            "description": "This represents the name of the signed document related to the payee's disbursement. It provides a unique identifier for the document, allowing you to easily differentiate between different documents associated with the disbursement."
+          },
+          "SignedBy": {
+            "type": "string",
+            "description": "This indicates who signed the document related to the payee's disbursement. It could be the payee themselves, or it could be another party involved in the disbursement process, such as a company representative or legal entity."
+          },
+          "SignedOn": {
+            "type": "string",
+            "description": "This element specifies the date on which the document related to the payee's disbursement was signed. It provides important context regarding the timeline of the disbursement process."
+          },
+          "DocumentLink": {
+            "type": "string",
+            "description": "This element contains a link to the signed document related to the payee's disbursement. However, please note that the link will only be available for a limited time of 5 minutes. After this time period has elapsed, the link will expire and you will no longer be able to access the document using the link."
+          }
+        }
+      },
+      "AuthResponse": {
+        "type": "object",
+        "properties": {
+          "access_token": {
+            "type": "string",
+            "description": "This API call includes an access token that must be used for authorization in all subsequent API calls",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiLQndCw0YLQsCDQndCw0YLQsCIsImVtYWlsIjoi0J3QsNGC0LAg0J3QsNGC0LAiLCJqdGkiOiIyZjgzNGNmNi1jZDQ1LTRkOWUtODFiNy1hMDVkZDYzYmMwOTIiLCJpYXQiOiIxMi8yMy8yMDIyIDY6NTk6NTMgUE0iLCJVc2VySWQiOiIxNDkwMTBhZi1mZDI3LTQ2ZTgtYmIzYi03YmNlYTRiYWFjZDkiLCJSb2xlIjoiQWRtaW4iLCJMYW5nIjoiNTc3ODkzZmItOTRkMy00ZjZhLWE1YzMtM2Y3ZDUzNjA4YjU0IiwiVmlkZW9TZXJ2ZXIiOiJWaW1lbyIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6IkFkbWluIiwibmJmIjoxNjcxODIxOTkzLCJleHAiOjE2NzE5MDgzOTMsImlzcyI6IkRlbW9Jc3N1ZXIiLCJhdWQiOiJEZW1vQXVkaWVuY2UifQ.lOzWfrSPObws4Q3S_ap59axD_VkEaRfoGWDVv8SH0V0"
+          },
+          "token_type": {
+            "description": "Indicates the type of authorization token. 'Bearer'.",
+            "type": "string",
+            "example": "Bearer"
+          },
+          "expires_in": {
+            "description": "Specifies the expiration time of the token in seconds.",
+            "type": "integer",
+            "example": 36000
+          }
+        }
+      },
+      "DisbursementResponse": {
+        "type": "object",
+        "properties": {
+          "disbursement_uuid": {
+            "type": "string",
+            "example": "disbursement-test-132"
+          },
+          "payor_email": {
+            "type": "string",
+            "example": "payor@example.com"
+          },
+          "authorization_parties": {
+            "type": "array",
+            "xml": {
+              "wrapped": true
+            },
+            "items": {
+              "$ref": "#/components/schemas/authorization-partie"
+            }
+          },
+          "payees": {
+            "type": "array",
+            "xml": {
+              "wrapped": true
+            },
+            "items": {
+              "$ref": "#/components/schemas/payeeResponse"
+            }
+          },
+          "created_at": {
+            "type": "string",
+            "example": "2023-01-20T01:08:33"
+          }
+        }
+      },
+      "payeeResponse": {
+        "type": "object",
+        "properties": {
+          "payee_uuid": {
+            "type": "string",
+            "example": "payee-test-1"
+          },
+          "amount": {
+            "type": "number",
+            "example": 20
+          },
+          "email": {
+            "type": "string",
+            "example": "payee_1@gmail.com"
+          },
+          "first_name": {
+            "type": "string",
+            "example": "John"
+          },
+          "last_name": {
+            "type": "string",
+            "example": "Doe"
+          },
+          "address_one": {
+            "type": "string",
+            "example": "123 Main Street"
+          },
+          "address_two": {
+            "type": "string",
+            "example": ""
+          },
+          "city": {
+            "type": "string",
+            "example": "Payee city"
+          },
+          "state": {
+            "type": "string",
+            "example": "FL"
+          },
+          "zip_code": {
+            "type": "string",
+            "example": 33052
+          },
+          "phone": {
+            "type": "string",
+            "example": "0000000000"
+          },
+          "delivery_options": {
+            "$ref": "#/components/schemas/delivery-option"
+          },
+          "allowed_payment_method_ids": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "example": [
+              1,
+              4,
+              5,
+              6
+            ]
+          },
+          "permission_required_from": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "auth-party-1",
+              "auth-party-2"
+            ]
+          },
+          "status": {
+            "type": "string",
+            "example": "PendingAuthorizationPartiesPermission"
+          },
+          "payee_type_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "field_values": {
+            "type": "array",
+            "xml": {
+              "wrapped": true
+            },
+            "items": {
+              "$ref": "#/components/schemas/field_values"
+            }
+          }
+        }
+      },
+      "AddFundResponse": {
+        "type": "object",
+        "properties": {
+          "prev_balance": {
+            "type": "number"
+          },
+          "new_balance": {
+            "type": "number"
+          },
+          "transaction_id": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "example": "2023-01-20T01:08:33"
+          }
+        }
+      },
+      "BadRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "The name of the error. Can be one of the following VALIDATION_ERROR INTERNAL_SERVER_ERROR LOW_FUNDS_ERROR"
+          },
+          "message": {
+            "type": "string",
+            "example": "Provides an explanation for the error's cause."
+          },
+          "details": {
+            "type": "array",
+            "description": "Provides specific details on which fields contain errors.",
+            "items": {
+              "$ref": "#/components/schemas/ERROR_DETAIL"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "The name of the error. Will be one of the following. NOT_FOUND_ERROR"
+          },
+          "message": {
+            "type": "string",
+            "example": "Contains the reason why this error occurred."
+          },
+          "details": {
+            "type": "array",
+            "description": "Contains the details about the specific fields that have an error.",
+            "items": {
+              "$ref": "#/components/schemas/ERROR_DETAIL"
+            }
+          }
+        }
+      },
+      "ERROR_DETAIL": {
+        "type": "object",
+        "properties": {
+          "Issue": {
+            "type": "string",
+            "example": "The description of the error"
+          },
+          "Field": {
+            "type": "string",
+            "example": "The name of the field that has the error."
+          },
+          "Location": {
+            "type": "string",
+            "description": "The location of the field where it is located. This field’s value can be one of the following body,header"
+          }
+        }
+      },
+      "InternalServerError": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "INTERNAL_SERVER_ERROR"
+          },
+          "message": {
+            "type": "string",
+            "example": "An error occurred while processing your request. Please try again!"
+          },
+          "details": {
+            "type": "string",
+            "example": null
+          }
+        }
+      }
+    },
+    "requestBodies": {
+      "Auth": {
+        "description": "Auth",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Auth"
+            }
+          }
+        }
+      },
+      "one-timer-create": {
+        "description": "one-timer-create",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/onetimer-create"
+            }
+          }
+        }
+      },
+      "CancelDisbursement": {
+        "description": "CancelDisbursement",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/CancelDisbursement"
+            }
+          }
+        }
+      },
+      "SignedDocuments": {
+        "description": "SignedDocuments",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/SignedDocuments"
+            }
+          }
+        }
+      },
+      "SignedDocumentsResponse": {
+        "description": "SignedDocuments",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/SignedDocumentsResponse"
+            }
+          }
+        }
+      },
+      "AuthResponse": {
+        "description": "AuthResponse",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/AuthResponse"
+            }
+          }
+        }
+      },
+      "DisbursementResponse": {
+        "description": "DisbursementResponse",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/DisbursementResponse"
+            }
+          }
+        }
+      },
+      "AddFundResponse": {
+        "description": "AddFundResponse",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/AddFundResponse"
+            }
+          }
+        }
+      },
+      "BadRequest": {
+        "description": "BadRequest",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/BadRequest"
+            }
+          }
+        }
+      },
+      "ERROR_DETAIL": {
+        "description": "ERROR_DETAIL",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/ERROR_DETAIL"
+            }
+          }
+        }
+      },
+      "NotFound": {
+        "description": "NotFound",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/NotFound"
+            }
+          }
+        }
+      },
+      "InternalServerError": {
+        "description": "Internal Server Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/InternalServerError"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    }
+  }
+}
