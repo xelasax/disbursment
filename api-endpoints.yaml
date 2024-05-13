@@ -1,0 +1,1300 @@
+openapi: 3.0.0
+x-stoplight:
+  id: a349g7fbopcdn
+info:
+  description: |-
+    # Get Started
+
+    ## Introduction
+
+    Welcome to the DisburseCloud API documentation, your comprehensive guide to simplifying financial transactions and optimizing your business operations. Whether you're a developer looking to integrate our API into your applications or a business owner seeking to streamline your financial processes, this documentation has everything you need to get started.
+
+    Explore our seamless integration capabilities, empowering developers to incorporate DisburseCloud into their existing systems effortlessly while ensuring minimal disruption to business operations.
+
+    Discover our extensive toolkit, equipping you with the necessary tools to manage every aspect of your financial transactions, from handling payments to verifying user identities and maintaining the security of your operations.
+
+    Learn how DisburseCloud is tailored to meet the specific needs of various financial services, including automated payments, real-time transaction tracking, and user credential management, ensuring your applications are optimized for efficiency.
+
+    Understand the benefits of our dual environments for testing and production, providing developers with a sandbox environment to experiment with new features before deploying them to production, ensuring a reliable and scalable infrastructure for your operations.
+
+    Experience the scalability of our infrastructure, designed to support your growing business needs seamlessly, whether you're a startup or a large enterprise.
+
+    With the DisburseCloud API documentation as your guide, you can streamline your financial processes, enhance security, and improve overall efficiency, empowering you to focus on what matters most—growing your business.
+
+
+    ## Security
+
+    At DisburseCloud, safeguarding the security and integrity of financial transactions is our top priority. Our API employs robust authentication mechanisms, and one central component of our security framework is the authentication endpoint. This endpoint serves as the primary method for user authentication, ensuring secure access to our API's powerful functionality.
+
+    ### **How It Works**
+
+    When you submit your credentials to our authentication endpoint, you initiate a secure authentication process. Upon successful authentication, the system grants you an access token, also known as a Bearer token. This token is essential for authorizing subsequent API calls, allowing you to securely interact with our endpoints.
+
+    ### **Generating and Managing Your Bearer Tokens**
+
+    Generating your Bearer tokens is a simple process. After authentication, you'll receive a personalized token with a validity period of 3600 seconds. You can obtain this token programmatically via API calls.
+
+    ### **Securing Your Bearer Tokens**
+
+    Protecting your Bearer tokens is crucial to maintain the security of your account and financial data. Store your tokens securely and avoid exposing them publicly or embedding them directly in your application code. Instead, use trusted methods like environment variables or a secure vault solution.
+
+    ### **Using Your Bearer Tokens**
+
+    To access our API services, include your Bearer token in the Authorization header of your API requests. This ensures uninterrupted and secure interaction with our endpoints, allowing you to leverage our API's functionality with confidence.
+
+    By following these personalized guidelines and leveraging your Bearer token, you can confidently access the DisburseCloud API, knowing that your financial transactions are secure and confidential.
+  version: 2.0.0
+  title: DisburseCloud
+  termsOfService: 'http://www.disbursecloud.com/termsofservice'
+  contact:
+    name: API Support
+    email: apiteam@disbursecloud.com
+    url: 'https://disbursecloud.com'
+  x-logo:
+    url: 'https://www.disbursecloud.com/wp-content/uploads/2024/01/Logo-Blue-1.png'
+    altText: DisburseCloud logo
+servers:
+  - url: 'https://sandbox.services.disbursecloud.com/api/v1'
+    description: Sandbox
+  - url: 'https://app.services.disbursecloud.com/api/v1'
+    description: Production
+externalDocs:
+  description: Access to live google doc API Doscumentation.
+  url: 'https://docs.google.com/document/d/1Z7IJvXjD2-AjC6TIGJVKgrkHJMSO8ajCjgexy2RAvCw/edit?usp=sharing'
+tags:
+  - name: Authentication
+    description: |
+      The Authentication section provides APIs for user authentication and authorization within the DisburseCloud ecosystem. These APIs ensure secure access to DisburseCloud services and protect sensitive financial data.
+
+      ### Key Features:
+
+      - **User Authentication**: Authenticate users securely using various authentication mechanisms, such as username/password, API tokens, or OAuth.
+      - **Authorization**: Authorize users to access specific resources based on their roles and permissions, ensuring proper data protection and compliance.
+      - **Token Management**: Manage authentication tokens, including generation, validation, and revocation, to maintain security and control over user sessions.
+
+      ### Benefits:
+
+      - **Enhanced Security**: Robust authentication and authorization mechanisms protect against unauthorized access and data breaches, safeguarding sensitive financial information.
+      - **User Convenience**: Streamlined authentication processes ensure a seamless user experience, reducing friction and enhancing user satisfaction.
+      - **Compliance**: Meet regulatory requirements and industry standards by implementing secure authentication practices and data protection measures.
+      - **Scalability**: Scalable authentication solutions accommodate growing user bases and evolving business needs, ensuring reliable access to DisburseCloud services.
+  - name: Funding
+    description: |
+      The Funding section provides a set of APIs that enable businesses to conveniently and securely add funds to their DisburseCloud accounts. These APIs offer flexible integration options, allowing businesses to seamlessly manage their account balances and ensure uninterrupted disbursements to recipients.
+
+      ### Key Features:
+
+      - **Convenient Integration**: Businesses can easily integrate with DisburseCloud's funding APIs, streamlining the process of adding funds to their accounts.
+      - **Secure Transactions**: All funding transactions are conducted over secure channels, ensuring the confidentiality and integrity of financial data.
+      - **Real-time Balance Updates**: Businesses receive real-time updates on their account balances, enabling them to monitor their funding status and make informed decisions.
+      - **Customized Funding Options**: DisburseCloud offers customizable funding options tailored to meet the specific needs and preferences of each business, providing flexibility and control over funding activities.
+
+      ### Benefits:
+
+      - **Efficiency**: Streamlined funding processes save businesses time and resources, enabling them to focus on core operations.
+      - **Transparency**: Real-time balance updates and transaction history access provide businesses with transparency and insight into their funding activities.
+      - **Flexibility**: Customizable funding options accommodate diverse business needs and preferences, ensuring a tailored funding experience.
+
+      The Funding section empowers businesses to manage their DisburseCloud accounts effectively, facilitating seamless funding processes and ensuring the uninterrupted flow of disbursements to recipients.
+  - name: Disbursement
+    description: |
+      The Disbursement section offers a comprehensive suite of APIs tailored to streamline the distribution of funds to recipients. Developers and businesses can take advantage of these APIs to simplify disbursement workflows, ensuring swift and secure transactions. Key features include robust tools for initiating disbursements, tracking transaction statuses in real-time, and managing recipient information seamlessly.
+
+      ### Key Features:
+
+      - **Efficient Disbursement Initiation**: Easily initiate disbursements to recipients with simple API calls.
+      - **Real-time Transaction Tracking**: Track the status of disbursements in real-time, providing visibility into transaction progress.
+      - **Flexible Recipient Management**: Manage recipient details and preferences effortlessly, allowing for easy updates and customization.
+      - **Secure Transactions**: Ensure the security of financial transactions with robust encryption and authentication mechanisms.
+
+      ### Benefits:
+
+      - **Streamlined Workflows**: Simplify disbursement processes, saving time and resources for both developers and businesses.
+      - **Enhanced Transparency**: Gain visibility into transaction statuses and recipient details, promoting transparency and accountability.
+      - **Improved Customer Satisfaction**: Ensure prompt and secure fund transfers, enhancing the overall customer experience.
+      - **Scalable Solutions**: Scale disbursement operations seamlessly to accommodate business growth and evolving needs.
+
+      With user-friendly integration options and powerful capabilities, the Disbursement section empowers developers and businesses to optimize financial processes, driving efficiency and customer satisfaction.
+  - name: Glossary
+    description: |-
+      This section provides definitions for some important parameters.
+
+      ### Postage Code Option Definitions
+
+      |Id| CODE |Postage Type|
+      | :- | :- | :- |
+      |1|FC|USPS First Class|
+      |2|PR|USPS Priority|
+      |4|PRS|USPS Priority + Sig Conf|
+      |5|SC|Fedex 2 Day|
+      |6|FSO|Fedex Standard Overnight \*|
+      |8|USPSIDAY|USPS Priority Express|
+      |9|USPSCERT|USPS Certified Mail|
+      |13|FPO|Fedex Priority Overnight \*|
+      |14|FFO|Fedex First Overnight \*|
+      |15|FSD|Fedex Saturday Delivery \*|
+paths:
+  /companies/authenticate:
+    post:
+      summary: Access Token
+      description: |-
+        This endpoint acts as the gateway for user authentication using provided credentials. Upon successful authentication, an access token (Bearer token) is issued, which must be included in the Authorization header for authentication in all subsequent endpoint calls.
+
+        This token, obtained in the response body, is vital for accessing other endpoints securely. Tokens expire after 3600 seconds, so ensure timely renewal for uninterrupted access.
+
+        ```
+        Authorization: Bearer {{access_token obtained in response body}}
+        ```
+
+
+        Authentication to obtain an `access_token` is done using Basic Authentication with the __Company TIN__ as the `username` and __API key__ as the `password`.
+
+        To obtain the API Key:
+        1. Login to your dashbaord and click on admin on the right top corner
+        2. Select Profile  and click on View API Key
+
+
+        For a __Multi-Company user__, it is crucial to include the `CompanyApiKey` in the __header__.
+
+        This key uniquely identifies the *specific company being accessed through the API* and is essential for proper authentication and authorization.
+
+
+        ```
+        CompanyApiKey: {{your company's api key}}
+        ```
+      requestBody:
+        description: Create a new token
+        content: {}
+        required: true
+      responses:
+        '200':
+          description: Successful response containing authentication details
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  access_token:
+                    type: string
+                    description: The access token (Bearer token) for subsequent API requests
+                  token_type:
+                    type: string
+                    description: The token type (Bearer)
+                  expires_in:
+                    type: integer
+                    description: The expiration time of the access token in seconds
+                    example: 36000
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+      operationId: companies-authentication
+      security:
+        - Basic: []
+      tags:
+        - Authentication
+  /companies/add-funds:
+    post:
+      summary: Deposit funds
+      parameters:
+        - $ref: '#/components/parameters/CompanyApiKey'
+      security:
+        - Bearer: []
+      description: This endpoint enables you to add funds to your company's account on DisburseCloud. It's important to note that the debited amount will be deducted from the bank account you provided during the DisburseCloud signup process.
+      responses:
+        '200':
+          description: Successful response containing details of the transaction
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddFundResponse'
+              examples: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '401':
+          description: 'If no response body is returned, it indicates that either the authentication token is missing or it is not valid.'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+      tags:
+        - Funding
+      operationId: add-funds
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - payment_method
+                - description
+                - large_disbursement
+                - amount
+              properties:
+                payment_method:
+                  type: string
+                  enum:
+                    - ACH
+                    - WireTransfer
+                  description: The payment method to be used for the disbursement.
+                description:
+                  type: string
+                  description: A description or note for the disbursement.
+                large_disbursement:
+                  type: boolean
+                  description: Indicates whether the disbursement is large or not.
+                amount:
+                  type: number
+                  format: double
+                  description: The monetary value you intend to contribute to the company's balance.
+                  example: 2
+        description: ''
+  /disbursements/create:
+    post:
+      summary: Full-process one-timers
+      security:
+        - Bearer: []
+      description: 'This endpoint empowers users to distribute funds to recipients. You have the flexibility to designate authorization parties who must approve individual disbursements before they are executed. If the provided details are accurate, DisburseCloud will proceed to release funds to the specified payees. With DisburseCloud, users can access a range of payment options such as ACH, Virtual Card, Instant Deposit, Digital Check, Postal Check, Venmo, and PayPal. Additionally, you can customize the payment options available for selection by users through this API call.'
+      requestBody:
+        description: Create disbursement
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DisbursementRequest'
+            examples:
+              Example 1:
+                value:
+                  disbursement_uuid: disbursement-1
+                  large_disbursement: false
+                  authorization_parties:
+                    - party_uuid: auth-party-1
+                      party_type: INDIVIDUAL
+                      title: Policy holder
+                      Company_name: ''
+                      email: auth_party@example.com
+                      first_name: James
+                      last_name: McGill
+                      phone: '0000000000'
+                    - party_uuid: auth-party-2
+                      party_type: INDIVIDUAL
+                      Company_name: ''
+                      title: Policy holder
+                      email: auth_party2@example.com
+                      first_name: Thomas
+                      last_name: Shelby
+                      phone: '0000000000'
+                  payees:
+                    - payee_type_id: 1
+                      amount: 20
+                      payee_uuid: payee-1
+                      email: payee_1@example.com
+                      first_name: John
+                      last_name: Doe
+                      address_one: 123 Main Street
+                      address_two: ''
+                      city: Payee city
+                      state: FL
+                      zip_code: '33052'
+                      phone: '0000000000'
+                      delivery_options:
+                        email: true
+                        sms: false
+                      allowed_payment_method_ids:
+                        - 1
+                        - 4
+                        - 5
+                        - 6
+                        - 7
+                      permission_required_from:
+                        - auth-party-1
+                        - auth-party-2
+                      field_values:
+                        - name: insurer_first_name
+                          value: Gustavo
+                        - name: insurer_last_name
+                          value: Fring
+                        - name: policy_no
+                          value: Policy-1
+                      payment_method_settings:
+                        check_postage_type: FSO
+        required: true
+      responses:
+        '200':
+          description: 'The response from the Disbursement endpoint mirrors the request body fields, maintaining their original input values. Notably, within the PAYEE object array, the `status` and `created_at` fields provide crucial information for monitoring the status of all payees involved in the disbursement.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DisbursementResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '401':
+          description: 'If no response body is returned, it indicates that either the authentication token is missing or it is not valid.'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+      tags:
+        - Disbursement
+      operationId: process-payment
+      parameters:
+        - $ref: '#/components/parameters/CompanyApiKey'
+  '/{disbursement_uuid}/payees/{payee_uuid}/cancel':
+    post:
+      tags:
+        - Disbursement
+      summary: Cancel disbursement
+      security:
+        - Bearer: []
+      description: This endpoint enables users to cancel a created disbursement for a specific payee by providing the disbursement uuid and the payee uuid of the disbursement to be cancelled.
+      requestBody:
+        description: Create a new token
+        content: {}
+        required: true
+      responses:
+        '200':
+          description: 'If no response body is returned, it indicates that the disbursement has been successfully cancelled.'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '401':
+          description: 'If no response body is returned, it indicates that either the authentication token is missing or it is not valid.'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+      operationId: cancel-disbursment
+      parameters:
+        - $ref: '#/components/parameters/CompanyApiKey'
+    parameters:
+      - schema:
+          type: string
+        name: disbursement_uuid
+        in: path
+        required: true
+        description: The disbursement uuid of the disbursement you want to cancel.
+      - schema:
+          type: string
+        name: payee_uuid
+        in: path
+        required: true
+        description: The payee uuid of the payee  you want to cancel the  disbursement for.
+  '/disbursements/{disbursement_uuid}':
+    get:
+      tags:
+        - Disbursement
+      summary: Get disbursement
+      parameters:
+        - $ref: '#/components/parameters/CompanyApiKey'
+      security:
+        - Bearer: []
+      description: 'This endpoint allows users to fetch comprehensive details pertaining to a specific disbursement, including transaction status, recipient information, transaction amount, and any associated metadata.'
+      responses:
+        '200':
+          description: 'The response from the Disbursement endpoint mirrors the request body fields, maintaining their original input values. Notably, within the PAYEE object array, the `status` and `created_at` fields provide crucial information for monitoring the status of all payees involved in the disbursement.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DisbursementResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '401':
+          description: 'If no response body is returned, it indicates that either the authentication token is missing or it is not valid.'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+      operationId: get-disbursement
+    parameters:
+      - schema:
+          type: string
+        name: disbursement_uuid
+        in: path
+        required: true
+        description: The disbursement uuid of the  disbursement you want the  details for.
+  '/disbursements/{disbursement_uuid}/pay ees/{payee_uuid}':
+    get:
+      tags:
+        - Disbursement
+      summary: Get disbursement payee
+      parameters:
+        - in: path
+          name: disbursement_uuid
+          schema:
+            type: string
+          required: true
+          description: The disbursement uuid of the disbursement you want the details for.
+        - in: path
+          name: payee_uuid
+          schema:
+            type: string
+          required: true
+          description: The specific payee’s payee_uuid of whom you want the details for.
+        - $ref: '#/components/parameters/CompanyApiKey'
+      security:
+        - Bearer: []
+      description: 'This endpoint is utilized to retrieve comprehensive details regarding a disbursement''s payee. This includes pertinent information such as the payee''s name, contact details, payment status, and any associated metadata.'
+      responses:
+        '200':
+          description: 'The response from the Disbursement endpoint mirrors the request body fields, maintaining their original input values. Notably, within the PAYEE object array, the `status` and `created_at` fields provide crucial information for monitoring the status of all payees involved in the disbursement.'
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/payee'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '401':
+          description: 'If no response body is returned, it indicates that either the authentication token is missing or it is not valid.'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+      operationId: disbursment-payee
+    parameters:
+      - schema:
+          type: string
+        name: disbursement_uuid
+        in: path
+        required: true
+        description: The disbursement uuid of the disbursement you want to retrieve.
+      - schema:
+          type: string
+        name: payee_uuid
+        in: path
+        required: true
+        description: The payee uuid of the payee  you want to retrieve  disbursement for.
+  '/disbursements/{disbursement_uuid}/pay ees/{payee_uuid}/resend-email':
+    post:
+      tags:
+        - Disbursement
+      summary: Resend disbursement email
+      parameters:
+        - in: path
+          name: disbursement_uuid
+          schema:
+            type: string
+          required: true
+          description: The disbursement uuid of the disbursement you want the details for.
+        - in: path
+          name: payee_uuid
+          schema:
+            type: string
+          required: true
+          description: The specific payee’s payee_uuid of whom you want the details for.
+        - $ref: '#/components/parameters/CompanyApiKey'
+      security:
+        - Bearer: []
+      description: This endpoint allows users to resend the email notification to a specific payee associated with a particular disbursement. Users can trigger the reissuance of the email notification to ensure timely communication regarding the disbursement.
+      responses:
+        '200':
+          description: 'Upon successful resend of the email notification to the designated payee associated with the specified disbursement, no response body is returned.'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '401':
+          description: 'If no response body is returned, it indicates that either the authentication token is missing or it is not valid.'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+      operationId: disbursement-resend-email
+    parameters:
+      - schema:
+          type: string
+        name: disbursement_uuid
+        in: path
+        required: true
+        description: A unique identifier assigned to the disbursement for which the email notification is to be resent.
+      - schema:
+          type: string
+        name: payee_uuid
+        in: path
+        required: true
+        description: A unique identifier assigned to the payee to whom the email notification will be resent.
+  '/disbursements/{disbursement_uuid}/payees/{payee_uuid}/transaction':
+    get:
+      tags:
+        - Disbursement
+      summary: Transaction details
+      parameters:
+        - in: path
+          name: disbursement_uuid
+          schema:
+            type: string
+          required: true
+          description: The disbursement uuid of the disbursement you want the details for.
+        - in: path
+          name: payee_uuid
+          schema:
+            type: string
+          required: true
+          description: The specific payee’s payee_uuid of whom you want the details for.
+        - $ref: '#/components/parameters/CompanyApiKey'
+      security:
+        - Bearer: []
+      description: 'The endpoint enables users to access transaction details for a specific payee within a designated disbursement. It allows retrieval of information such as transaction status, amount, date, and associated metadata, facilitating efficient tracking and management of individual transactions.'
+      responses:
+        '200':
+          description: TRANSACTION OBJECT
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '401':
+          description: 'If no response body is returned, it indicates that either the authentication token is missing or it is not valid.'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+      operationId: transaction-details
+    parameters:
+      - schema:
+          type: string
+        name: disbursement_uuid
+        in: path
+        required: true
+        description: A unique identifier assigned to the disbursement for which transaction details are being retrieved.
+      - schema:
+          type: string
+        name: payee_uuid
+        in: path
+        required: true
+        description: A unique identifier assigned to the payee for which transaction details are being retrieved.
+  "/documents/get-payee\x02disbursement-signed-documents":
+    post:
+      tags:
+        - Disbursement
+      summary: Get Signed Disbursement Documents
+      security:
+        - Bearer: []
+      description: 'This endpoint is specifically designed to retrieve all signed documents related to a payee''s disbursement. By utilizing this endpoint, users can access a comprehensive collection of all documents that have been signed and associated with the payee''s disbursement. This includes various documents such as Auth party agreements, ACH authorizations, payee contracts, and other legal paperwork necessary for the disbursement process. The endpoint provides a convenient and efficient way to access all the necessary signed documents in one place, streamlining the disbursement process and ensuring that all required documentation is easily '
+      requestBody:
+        description: Create disbursement
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignedDocuments'
+        required: true
+      responses:
+        '200':
+          description: DISBURSEMENT_DOCUMENT_DETAILS
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignedDocumentsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadRequest'
+        '401':
+          description: 'If no response body is returned, it indicates that either the authentication token is missing or it is not valid.'
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NotFound'
+        '500':
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServerError'
+      operationId: disbursment-documents
+    parameters: []
+components:
+  schemas:
+    authorization-partie:
+      required:
+        - party_uuid
+        - email
+        - first_name
+        - last_name
+        - phone
+      type: object
+      properties:
+        party_uuid:
+          type: string
+          description: 'To ensure proper identification and differentiation between authorization parties, the "party_uuid" field must be unique.'
+          example: auth-party-1
+        title:
+          type: string
+          description: The "title" field allows developers to specify a title for the authorization party. This title will be displayed in the email sent to the authorization party for the purpose of approving the disbursement. Any relevant or descriptive text can be entered in this field.
+          example: Policy holder
+        email:
+          type: string
+          description: 'The "email" field requires developers to input the email of the authorization party, where they will receive the request for authorization of the disbursement.'
+          example: auth_party@example.com
+        first_name:
+          type: string
+          description: Auth party’s first name.
+          example: James
+        last_name:
+          type: string
+          description: Auth party’s last name.
+          example: McGill
+        phone:
+          type: string
+          description: The "phone" field requires developers to input the phone number of the authorization party. This is necessary for authentication via OTP when the authorization party receives the email requesting approval of the disbursement.
+          example: '0000000000'
+      x-stoplight:
+        id: 279zqg0t4y2ou
+    delivery-option:
+      type: object
+      properties:
+        email:
+          type: boolean
+          description: 'The "email" field allows developers to specify whether the disbursement should be sent to the payee via email. By setting this field to "true", the disbursement will be delivered to the payee through their registered email.'
+          example: true
+        sms:
+          type: boolean
+          description: 'The "sms" field allows developers to specify whether the disbursement should be sent to the payee via sms to their registered phone number. By setting this field to "true", the disbursement will be delivered to the payee via SMS.'
+          example: false
+      x-stoplight:
+        id: roluwxl43whwq
+    payee:
+      required:
+        - payee_type_id
+        - amount
+        - payee_uuid
+        - email
+        - first_name
+        - last_name
+        - address_one
+        - address_two
+        - city
+        - state
+        - zip_code
+        - phone
+        - delivery_options
+        - allowed_payment_method_ids
+      type: object
+      properties:
+        payee_type_id:
+          type: integer
+          description: 'This parameter defines the type of payee you are sending the disbursement to. The value ranges from 1 to 4. Following is the explanation of all the payee type ids ONE_TIMER = 1, VENDOR = 2, AGENCY = 3, NAMED_INSURED = 4'
+          example: 1
+        amount:
+          type: number
+          description: The amount needed to be paid to the payee.
+          example: 20
+        payee_uuid:
+          type: string
+          description: A unique identifier for the disbursement payee.
+          example: payee-1
+        email:
+          type: string
+          description: 'When specifying the payee type as "VENDOR", "AGENCY" or "NAMED_INSURED", the "email" field requires developers to input the registered email of the respective vendor on the DisburseCloud platform. In the event that the entered email is not registered, the payee will receive an email inviting them to register on DisburseCloud in order to receive their payment. Alternatively, when specifying the payee type as "ONE_TIMER", the "Enter Payee Email" field requires developers to input the email of the one-time payee to whom the disbursement will be sent.'
+          example: payee_1@gmail.com
+        first_name:
+          type: string
+          description: First name of the payee
+          example: John
+        last_name:
+          type: string
+          description: Last name of the payee
+          example: Doe
+        address_one:
+          type: string
+          description: Address one of the payee
+          example: 123 Main Street
+        address_two:
+          type: string
+          description: Address two of the payee
+          example: ''
+        city:
+          type: string
+          description: City name of the payee
+          example: Payee city
+        state:
+          type: string
+          description: 'The "state" field requires developers to input the state abbreviation in short form. For example, instead of "Florida" it should be entered as "FL".'
+          example: FL
+        zip_code:
+          type: string
+          description: Payee’s zip code. Should be five characters long.
+          example: '33052'
+        phone:
+          type: string
+          description: Payee’s phone number. Should be 10 characters long. This number is required to verify the payee using an OTP.
+          example: '0000000000'
+        delivery_options:
+          $ref: '#/components/schemas/delivery-option'
+        allowed_payment_method_ids:
+          type: array
+          description: 'The "allowed_payment_method_ids" field requires developers to input the desired payment method IDs for the payee. The available options range from 1 to 7, corresponding to the following payment methods. 1. ACH 2. POSTAL CHECK 3. VIRTUAL CARD 4. INSTANT DEPOSIT 5. DIGITAL CHECK 6. VENMO 7. PAYPAL For example, to allow the payee to receive payment through ACH and Virtual Card, the developer would input the value of this field in the request body as allowed_payment_method_ids'
+          items:
+            type: integer
+          example:
+            - 1
+            - 4
+            - 5
+            - 6
+        permission_required_from:
+          type: array
+          description: 'To include authorization parties for the payee, developers must add the "party_uuid" field of the AUTH_PARTY object for each desired authorization party to the request array. This will ensure that each designated party approves the payment before it is released to the payee.'
+          items:
+            type: string
+          example:
+            - auth-party-1
+            - auth-party-2
+        field_values:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/field_values'
+      x-stoplight:
+        id: 58fggptz5renx
+    field_values:
+      required:
+        - name
+        - value
+      type: object
+      properties:
+        name:
+          type: string
+          description: API name of the custom field.
+          example: insurer_first_name
+        value:
+          type: string
+          description: Value of the custom field.
+          example: Gustavo
+      x-stoplight:
+        id: 9bf09nhp3cz67
+    DisbursementRequest:
+      description: Details of a disbursement transaction
+      x-stoplight:
+        id: c28d36a180829
+      type: object
+      properties:
+        disbursement_uuid:
+          type: string
+          description: The unique identifier for the disbursement
+        large_disbursement:
+          type: boolean
+          description: Indicates whether the disbursement is large
+        payees:
+          type: array
+          description: List of payees involved in the disbursement
+          items:
+            $ref: '#/components/schemas/Payee'
+        authorization_parties:
+          type: array
+          description: List of authorization parties involved in the disbursement
+          items:
+            $ref: '#/components/schemas/AuthorizationParty'
+      required:
+        - disbursement_uuid
+        - large_disbursement
+        - payees
+    AuthorizationParty:
+      description: Details of an authorization party involved in the disbursement
+      type: object
+      properties:
+        party_uuid:
+          type: string
+          description: The unique identifier for the authorization party
+        party_type:
+          type: string
+          description: |-
+            The type of the authorization party (e.g., INDIVIDUAL, COMPANY)
+
+            **PARTY TYPE**: The party type for an auth party determines the information you need to enter for that party. 
+
+            If you enter the value **COMPANY** for this field, then you only need to enter the value of `company_name`,`title`, and `party_uuid`. Because this will send an email to the payee to fetch the details of the additional payee for approval.
+
+            If you choose **INDIVIDUAL**, then you will need to enter all the other fields as well such as `email`, `phone`, `first_name` and `last_name`. This will send an email directly to the individual to get their approval for the payee.
+          enum:
+            - COMPANY
+            - INDIVIDUAL
+        title:
+          type: string
+          description: The title of the authorization party
+        Company_name:
+          type: string
+          description: The name of the company associated with the authorization party
+        email:
+          type: string
+          format: email
+          description: The email address of the authorization party
+        first_name:
+          type: string
+          description: The first name of the authorization party
+        last_name:
+          type: string
+          description: The last name of the authorization party
+        phone:
+          type: string
+          description: The phone number of the authorization party
+      required:
+        - party_uuid
+        - party_type
+    Payee:
+      description: Details of a payee involved in the disbursement
+      type: object
+      properties:
+        payee_type_id:
+          type: integer
+          description: The identifier for the type of payee
+        amount:
+          type: number
+          description: The amount to be disbursed to the payee
+        payee_uuid:
+          type: string
+          description: The unique identifier for the payee
+        email:
+          type: string
+          format: email
+          description: The email address of the payee
+        first_name:
+          type: string
+          description: The first name of the payee
+        last_name:
+          type: string
+          description: The last name of the payee
+        address_one:
+          type: string
+          description: The first line of the payee's address
+        address_two:
+          type: string
+          description: The second line of the payee's address
+        city:
+          type: string
+          description: The city of the payee's address
+        state:
+          type: string
+          description: The state of the payee's address
+        zip_code:
+          type: string
+          description: The ZIP code of the payee's address
+        phone:
+          type: string
+          description: The phone number of the payee
+        delivery_options:
+          type: object
+          description: Options for delivering disbursement notifications to the payee
+          properties:
+            email:
+              type: boolean
+              description: |-
+                Indicates whether email notifications are enabled. 
+                Set this to `true` if you want to send the disbursement using the payee’s email.
+            sms:
+              type: boolean
+              description: |-
+                Indicates whether SMS notifications are enabled
+                Set this to true if you want to send the disbursement using the payee’s phone number.
+            direct_disburse:
+              type: boolean
+              x-stoplight:
+                id: z50mqbbw6woe4
+              description: Set this to true if you want to send a postal check directly to the payee address .
+        allowed_payment_method_ids:
+          type: array
+          description: List of allowed payment method IDs for the payee
+          items:
+            type: integer
+        permission_required_from:
+          type: array
+          description: List of authorization party UUIDs from which permission is required for the payee
+          items:
+            type: string
+        field_values:
+          type: array
+          description: |-
+            List of field values associated with the payee.
+            Required only if you have some required custom fields
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                description: The name of the field
+              value:
+                type: string
+                description: The value of the field
+            required:
+              - name
+              - value
+        payment_method_settings:
+          type: object
+          description: Settings related to the payment method for the payee
+          properties:
+            check_postage_type:
+              type: string
+              description: |
+                The type of check postage.
+              enum:
+                - FC
+                - PR
+                - PRS
+                - SC
+                - FSO
+                - USPS1DAY
+                - USPSCERT
+                - FPO
+                - FFO
+                - FSD
+            value:
+              type: string
+              x-stoplight:
+                id: ju43isj7f821d
+              description: Value definiton for custom field
+      required:
+        - payee_type_id
+        - amount
+        - payee_uuid
+        - email
+        - first_name
+        - address_one
+        - city
+        - state
+        - zip_code
+        - phone
+        - delivery_options
+        - allowed_payment_method_ids
+    SignedDocuments:
+      required:
+        - disbursement_uuid
+        - payee_uuid
+      type: object
+      properties:
+        disbursement_uuid:
+          type: string
+          description: The disbursement uuid of the disbursement you want the details for.
+        payee_uuid:
+          type: string
+          description: The specific payee’s payee_uuid of whom you want the details for.
+      x-stoplight:
+        id: kv7v2lvddpss8
+    SignedDocumentsResponse:
+      type: object
+      properties:
+        DocumentName:
+          type: string
+          description: 'This represents the name of the signed document related to the payee''s disbursement. It provides a unique identifier for the document, allowing you to easily differentiate between different documents associated with the disbursement.'
+        SignedBy:
+          type: string
+          description: 'This indicates who signed the document related to the payee''s disbursement. It could be the payee themselves, or it could be another party involved in the disbursement process, such as a company representative or legal entity.'
+        SignedOn:
+          type: string
+          description: This element specifies the date on which the document related to the payee's disbursement was signed. It provides important context regarding the timeline of the disbursement process.
+        DocumentLink:
+          type: string
+          description: 'This element contains a link to the signed document related to the payee''s disbursement. However, please note that the link will only be available for a limited time of 5 minutes. After this time period has elapsed, the link will expire and you will no longer be able to access the document using the link.'
+      x-stoplight:
+        id: y0i390m8f3tmc
+    DisbursementResponse:
+      type: object
+      properties:
+        disbursement_uuid:
+          type: string
+          example: disbursement-test-132
+        payor_email:
+          type: string
+          example: payor@example.com
+        authorization_parties:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/authorization-partie'
+        payees:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/payeeResponse'
+        created_at:
+          type: string
+          example: '2023-01-20 01:08:33'
+      x-stoplight:
+        id: 55qop7fybn8k3
+    payeeResponse:
+      type: object
+      properties:
+        payee_uuid:
+          type: string
+          example: payee-test-1
+        amount:
+          type: number
+          example: 20
+        email:
+          type: string
+          example: payee_1@gmail.com
+        first_name:
+          type: string
+          example: John
+        last_name:
+          type: string
+          example: Doe
+        address_one:
+          type: string
+          example: 123 Main Street
+        address_two:
+          type: string
+          example: ''
+        city:
+          type: string
+          example: Payee city
+        state:
+          type: string
+          example: FL
+        zip_code:
+          type: string
+          example: '33052'
+        phone:
+          type: string
+          example: '0000000000'
+        delivery_options:
+          $ref: '#/components/schemas/delivery-option'
+        allowed_payment_method_ids:
+          type: array
+          items:
+            type: integer
+          example:
+            - 1
+            - 4
+            - 5
+            - 6
+        permission_required_from:
+          type: array
+          items:
+            type: string
+          example:
+            - auth-party-1
+            - auth-party-2
+        status:
+          type: string
+          example: PendingAuthorizationPartiesPermission
+        payee_type_id:
+          type: integer
+          example: 1
+        field_values:
+          type: array
+          xml:
+            wrapped: true
+          items:
+            $ref: '#/components/schemas/field_values'
+      x-stoplight:
+        id: xp8clpytq0zn5
+    AddFundResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: A message indicating the result of the transaction
+        prev_balance:
+          type: number
+          format: decimal
+          description: The previous balance of the company before the transaction
+        prev_ld_balance:
+          type: number
+          format: decimal
+          description: The previous large balance of the company before the transaction
+        new_balance:
+          type: number
+          format: decimal
+          description: The new balance of the company after the transaction
+        new_ld_balance:
+          type: number
+          format: decimal
+          description: The new large balance of the company after the transaction
+        total_balance:
+          type: number
+          format: decimal
+          description: The total balance of the company after the transaction
+        transaction_id:
+          type: string
+          description: 'The unique identifier of the transaction, useful for tracking purposes'
+        created_at:
+          type: string
+          format: date-time
+          description: The date and time when the transaction occurred
+          example: '2023-01-20T01:08:33'
+      x-stoplight:
+        id: vwn5jdmyo28z9
+      description: Successful response containing transaction details
+    BadRequest:
+      type: object
+      x-stoplight:
+        id: 77p5cfd0yjbti
+      properties:
+        name:
+          type: string
+          enum:
+            - VALIDATION_ERROR
+            - INTERNAL_SERVER_ERROR
+            - LOW_FUNDS_ERROR
+          description: Represent the type of error
+          readOnly: true
+        message:
+          type: string
+          example: Provides an explanation for the error's cause.
+          description: Represents a description or reason for the error.
+          readOnly: true
+        details:
+          type: array
+          description: Provides information about the individual fields that are experiencing an error.
+          items:
+            $ref: '#/components/schemas/ERROR_DETAIL'
+    NotFound:
+      type: object
+      x-stoplight:
+        id: 5kjv7dpfjvcs5
+      properties:
+        name:
+          type: string
+          description: Represent the type of error
+          enum:
+            - UNAUTHORIZED_ERROR
+          example: UNAUTHORIZED_ERROR
+        message:
+          type: string
+          example: Contains the reason why this error occurred.
+          description: Represents a description or reason for the error.
+        details:
+          type: string
+          description: Contains the details about the specific fields that have an error.
+          default: null
+          example: 'null'
+          nullable: true
+    ERROR_DETAIL:
+      type: object
+      x-stoplight:
+        id: 9zorkuzgrt0uc
+      properties:
+        Issue:
+          type: string
+          example: The description of the error
+          description: The description of the error.
+        Field:
+          type: string
+          example: The name of the field that has the error.
+          description: The name of the field that has the error.
+        Location:
+          type: string
+          description: The location of the field where the error is located.
+          enum:
+            - header
+            - body
+          example: header
+    InternalServerError:
+      type: object
+      x-stoplight:
+        id: gkfa3yvalq1dq
+      properties:
+        name:
+          type: string
+          example: INTERNAL_SERVER_ERROR
+          enum:
+            - INTERNAL_SERVER_ERROR
+          description: Represent the type of error
+          default: INTERNAL_SERVER_ERROR
+          readOnly: true
+        message:
+          type: string
+          example: An error occurred while processing your request. Please try again!
+          description: Represents a description or reason for the error.
+        details:
+          type: string
+          example: null
+          default: null
+          nullable: true
+  securitySchemes:
+    Bearer:
+      type: http
+      scheme: bearer
+      description: Represents the `access_token` obtain in the response body after successful authentication. It is used for authentication and authorization in the DisburseCloud API ecosystem. It serves as a secure and temporary credential that grants access to protected resources and functionalities.
+    Basic:
+      type: http
+      scheme: basic
+      description: |-
+        It involves sending the user's credentials (typically username and password) encoded in the request headers, providing a straightforward mechanism for accessing protected resources.
+        <br/>
+        Authentication to obtain an `access_token` is done using the __Company TIN__ as the `username` and __API key__ as the `password`.
+  parameters:
+    CompanyApiKey:
+      name: CompanyApiKey
+      in: header
+      schema:
+        type: string
+      description: The Company API Key is a unique authentication credential provided by DisburseCloud to each registered company. This key serves as a secure identifier for the company's access to DisburseCloud services and resources.
+      required: true
